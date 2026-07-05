@@ -1,26 +1,29 @@
 class Solution {
     public int trap(int[] height) {
+        //Optimat method 
         int n=height.length;
-        int[] leftMax=new int[n];
-        int[] rightMax=new int[n];
+        int lMax=0,rMax=0,sum=0;
+        int l=0;
+        int r=n-1;
 
-        leftMax[0]=height[0];
-
-        for(int i=1;i<n;i++){
-            leftMax[i]=Math.max(leftMax[i-1],height[i]);
-        }
-
-        rightMax[n-1]=height[n-1];
-
-        for(int i=n-2;i>=0;i--){
-            rightMax[i]=Math.max(rightMax[i+1],height[i]);
-        }
-        int sum=0;
-        for(int i=0;i<n;i++){
-            if(leftMax[i]>height[i] && rightMax[i]>height[i]){
-            sum+=Math.min(leftMax[i],rightMax[i])-height[i];
+        while(l<=r){
+            if(lMax<rMax){
+                if(lMax>height[l]){
+                    sum+=lMax-height[l];
+                }else{
+                    lMax=height[l];
+                }
+                l++;
+            }else{
+                if(rMax>height[r]){
+                    sum+=rMax-height[r];
+                }else{
+                    rMax=height[r];
+                }
+                r--;
             }
         }
+        
         return sum;
         
     }
