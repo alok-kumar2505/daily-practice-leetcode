@@ -10,13 +10,17 @@ class Solution {
         }
 
         Arrays.sort(cars,(a,b)->Double.compare(a[0],b[0]));
-        Stack <Double> st=new Stack();
+        // Stack <Double> st=new Stack();
+        double maxTime=-1;
+        int cnt=0;
         for(int i=cars.length-1;i>=0;i--){
             double time=cars[i][1];
-            if(st.isEmpty() || time>st.peek()){
-                st.push(time);
+            if(time>maxTime){
+                maxTime=time;
+                cnt++;
+                // st.push(time);
             }
         }
-        return st.size();
+        return cnt;
     }
 }
