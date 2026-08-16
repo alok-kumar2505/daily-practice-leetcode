@@ -9,12 +9,10 @@ class Solution {
         while(pq.size()>1){
             int x=pq.poll();
             int y=pq.poll();
-            System.out.println(x+"-"+y);
+            // System.out.println(x+"-"+y);
 
-            if(x<y){
-                pq.add(y-x);
-            }else if(y<x){
-                pq.add(x-y);
+            if(x!=y){
+            pq.add(x-y);
             }
         }
         if(!pq.isEmpty()){
